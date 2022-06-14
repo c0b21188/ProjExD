@@ -3,7 +3,7 @@ import random
 
 NUM_OF_TRIALS = 3 #最大繰り返し回数
 NUM_OF_ALL_CHARS = 9 #対象文字数
-NUM_OF_ABS_CHARS = 2
+NUM_OF_ABS_CHARS = 2 #欠損文字数
 
 def main():
     st = datetime.datetime.now()
