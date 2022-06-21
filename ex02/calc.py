@@ -9,11 +9,11 @@ def button_click(event):
     #entry.insert(tk.END, num)
     if num == "=":
         eqn = entry.get()
-        res = eval(eqn)
-        entry.delete(0,tk.END)
-        entry.insert(tk.END,res)
+        res = eval(eqn)                #eval関数で計算する
+        entry.delete(0,tk.END)         #もともとあった文字を消す
+        entry.insert(tk.END,res)       #計算結果を表示する
     elif num == 'AC':
-        entry.delete(0, tk.END) #ACが押されたときにすべて消す
+        entry.delete(0, tk.END)        #ACが押されたときにすべて消す
     elif num == "C":
         s = entry.get()
         entry.delete(len(s)-1, tk.END) #Cが押されたときに1文字消す
