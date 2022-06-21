@@ -1,6 +1,7 @@
 import tkinter as tk
 import tkinter.messagebox as tkm
 
+
 def button_click(event):
     btn = event.widget
     num = btn["text"] #クリックされたボタンの文字
@@ -11,6 +12,12 @@ def button_click(event):
         res = eval(eqn)
         entry.delete(0,tk.END)
         entry.insert(tk.END,res)
+    elif num == 'AC':
+        entry.delete(0, tk.END) #ACが押されたときにすべて消す
+    elif num == "C":
+        s = entry.get()
+        entry.delete(len(s)-1, tk.END) #Cが押されたときに1文字消す
+
     else:
         entry.insert(tk.END,num)
 
@@ -18,7 +25,7 @@ def button_click(event):
 if __name__ == "__main__":
     root = tk.Tk()
     root.title("tk")
-    root.geometry("300x500")
+    # root.geometry("300x500")
 
     btn = tk.Button(root, text="9",
                     width=4,
@@ -31,7 +38,7 @@ if __name__ == "__main__":
 
     r,c = 1, 0 #r 行番号 c 列番号
     
-    for i, num in enumerate([9, 8, 7, 6, 5, 4, 3, 2, 1, 0, "+", "="]):
+    for i, num in enumerate([1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "+", "-", "*", "/", "=", "C","AC"]):
         btn = tk.Button(root,
                         text=f"{num}",
                         width=4,
@@ -44,7 +51,7 @@ if __name__ == "__main__":
 
         
         c += 1
-        if (i+1)%3 == 0:
+        if (i+1)%5 == 0:
             r += 1
             c = 0
 
