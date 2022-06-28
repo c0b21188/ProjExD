@@ -15,7 +15,11 @@ def main_proc():
     UP, DOWN, LEFT, RIGHT = range(4)
     KEY_DIC = {"w":UP, "s":DOWN, "a":LEFT, "d":RIGHT}
     delta = { #押されているキーkey/値:移動幅リスト[x,y]
-        "w":[0, -1],"s":[0, +1],"a":[-1, 0],"d":[+1,0],}
+        "w":[0, -1],
+        "s":[0, +1],
+        "a":[-1, 0],
+        "d":[+1,0],
+        }
     try:
         if maze_bg[my+delta[key][1]][mx+delta[key][0]] == 0:
             my,mx = my+delta[key][1], mx+delta[key][0]
