@@ -2,11 +2,11 @@ import tkinter as tk
 import random
 import maze_maker as mm
 
-def key_down(event):
+def key_down(event): #key_downの関数
     global key
     key = event.keysym
 
-def key_up(event):
+def key_up(event): #key_upの関数
     global key
     key = ""
 
@@ -34,7 +34,7 @@ if __name__ == "__main__":
 
     canvas = tk.Canvas(root, width=700, height=500, bg="black")
     canvas.pack()
-    maze_bg = mm.make_maze(7, 5) 
+    maze_bg = mm.make_maze(7, 5)
     mm.show_maze(canvas, maze_bg)
     #print(maze_bg)
 
