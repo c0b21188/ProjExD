@@ -6,9 +6,9 @@ def main():
     clock = pg.time.Clock()
     pg.display.set_caption("逃げろ！こうかとん")
     screen_sfc = pg.display.set_mode((1000,600)) #Surface
-    screen_rct = screen_sfc.get_rect() #Rect
-    bgimg_sfc = pg.image.load("fig/平原.jpg") #Surface
-    bgimg_rct = bgimg_sfc.get_rect() #Rect
+    screen_rct = screen_sfc.get_rect()           #Rect
+    bgimg_sfc = pg.image.load("fig/平原.jpg")    #Surface
+    bgimg_rct = bgimg_sfc.get_rect()             #Rect
     screen_sfc.blit(bgimg_sfc, bgimg_rct)
 
     #練習3
@@ -18,20 +18,21 @@ def main():
     kkimg_rct.center = 900,400
     
 
-    #練習5：爆弾
+    #練習5：１つ目の赤爆弾
     bmimg_sfc = pg.Surface((20,20)) #Surface
     bmimg_sfc.set_colorkey((0,0,0))
 
-    pg.draw.circle(bmimg_sfc, (255, 0, 0), (10, 10), 10)
+    pg.draw.circle(bmimg_sfc, (255, 0, 0), (10, 10), 10) #描画用surfaceであるimageに赤（(255,0,0)）で位置（横：50，縦：50）に半径50の円を描画する
     bmimg_rct = bmimg_sfc.get_rect() #Rect
     bmimg_rct.centerx = random.randint(0, screen_rct.width)
     bmimg_rct.centery = random.randint(0, screen_rct.height)
     vx,vy = +1, +1 #練習6
 
+    #２つ目の青爆弾
     bmimg_sfc2 = pg.Surface((20,20)) #Surface
     bmimg_sfc2.set_colorkey((0,0,0))
 
-    pg.draw.circle(bmimg_sfc2, (0, 0, 255), (10, 10), 10)
+    pg.draw.circle(bmimg_sfc2, (0, 0, 255), (10, 10), 10) 
     bmimg_rct2 = bmimg_sfc2.get_rect() #Rect
     bmimg_rct2.centerx = random.randint(10, screen_rct.width)
     bmimg_rct2.centery = random.randint(200, screen_rct.height)
@@ -47,14 +48,14 @@ def main():
 
         #練習4
         key_states = pg.key.get_pressed() #辞書
-        if key_states[pg.K_UP] == True: kkimg_rct.centery -= 1
-        if key_states[pg.K_DOWN] == True: kkimg_rct.centery += 1
-        if key_states[pg.K_LEFT] == True: kkimg_rct.centerx -= 1
+        if key_states[pg.K_UP]    == True: kkimg_rct.centery -= 1
+        if key_states[pg.K_DOWN]  == True: kkimg_rct.centery += 1
+        if key_states[pg.K_LEFT]  == True: kkimg_rct.centerx -= 1
         if key_states[pg.K_RIGHT] == True: kkimg_rct.centerx += 1
         if check_bound(kkimg_rct, screen_rct) != (1, 1):
-            if key_states[pg.K_UP] == True: kkimg_rct.centery += 1
-            if key_states[pg.K_DOWN] == True: kkimg_rct.centery -= 1
-            if key_states[pg.K_LEFT] == True: kkimg_rct.centerx += 1
+            if key_states[pg.K_UP]    == True: kkimg_rct.centery += 1
+            if key_states[pg.K_DOWN]  == True: kkimg_rct.centery -= 1
+            if key_states[pg.K_LEFT]  == True: kkimg_rct.centerx += 1
             if key_states[pg.K_RIGHT] == True: kkimg_rct.centerx -= 1 
         screen_sfc.blit(kkimg_sfc, kkimg_rct)
 
